@@ -2,6 +2,7 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import csurf from 'csurf';
 import usersRoutes from './routes/usuariosRoutes.js';
+import propiedadesRoutes from './routes/propiedadesRoutes.js';
 import db from './config/db.js';
 
 // crear el app de express
@@ -35,6 +36,7 @@ app.use(express.static('public'));
 
 // middleware
 app.use('/auth', usersRoutes);
+app.use('/', propiedadesRoutes);
 
 // puerto
 const port = process.env.PORT || 3000;

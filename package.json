@@ -7,7 +7,9 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "css": "postcss public/css/tailwind.css -o public/css/app.css --watch"
+    "css": "postcss public/css/tailwind.css -o public/css/app.css --watch",
+    "js": "webpack --watch",
+    "serve": "concurrently \"npm run css\" \"npm run js\""
   },
   "keywords": [
     "MVC",
@@ -17,11 +19,14 @@
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^10.4.19",
+    "concurrently": "^8.2.2",
     "express": "^4.19.2",
     "nodemon": "^3.1.0",
     "postcss": "^8.4.38",
     "postcss-cli": "^11.0.0",
-    "tailwindcss": "^3.4.3"
+    "tailwindcss": "^3.4.3",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
@@ -29,6 +34,7 @@
     "csurf": "^1.11.0",
     "dotenv": "^16.4.5",
     "express-validator": "^7.0.1",
+    "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.9.3",
     "nodemailer": "^6.9.13",
     "pug": "^3.0.2",

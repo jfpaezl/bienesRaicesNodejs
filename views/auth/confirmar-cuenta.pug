@@ -8,5 +8,5 @@ block content
     div(class="bg-white shadow py-8 px-4 rounded-lg max-w-lg mx-auto")
         p(class=error ? 'bg-red-500':'bg-green-500').py-2px-5.rounded-lg.w-full.font-bold.text-center.text-white.uppercase= msj
 
-        if error 
+        if !error 
             a(href="/auth/login" class="block text-center text-white bg-blue-500 py-2px-5 rounded-lg w-full font-bold uppercase mt-5") Iniciar sesión

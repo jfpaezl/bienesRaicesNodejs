@@ -5,13 +5,19 @@ block content
         h1.text-center.my10.font-extrabold.text-4xl Bienes 
             span.font-normal raices
         h2.text-center.text-2xl.font-extrabold= pagina
+        if errores  
+                div(class="max-w-md mx-auto my-10")
+                    ul
+                        each error in errores
+                            li.text-red-500.text-center.block.bg-red-100.rounded-md.py-2.px-3.mb-2= error.msg
         .mt-8.mx-auto.max-w-md
             .bg-white.py-8.px-4.shadow
-                form
+                form(method="POST" action="/auth/recover")
+                    input(type="hidden" name="_csrf" value=csrfToken)
                     div
                         label.block.text-sm.uppercase.text-gray-500.mb-2.font-bold tu email
                             input.form-input.w-full.py-2.px-3.border.border-gray-300.rounded-md.mb-4(placeholder="Tu Email" type="email" name="email")
                     div.flex.item-center.justify-between.pb-4
                         a.text-gray-500.text-xs(href="/auth/login") ¿Ya tienes cuenta? Inicia sesión
                         a.text-gray-500.text-xs(href="/auth/register") Quiero crear una cuenta
-                    input(type="submit" value="Crear Cuenta").cursor-pointer.bg-blue-500.p-2.border-2.border-blue-500.text-white.rounded-md.w-full.cursor-pointer   
+                    input(type="submit" value="Recuperar cuenta").cursor-pointer.bg-blue-500.p-2.border-2.border-blue-500.text-white.rounded-md.w-full.cursor-pointer   

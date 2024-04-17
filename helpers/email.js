@@ -29,6 +29,34 @@ const emailRegistro = async (data) => {
     })
 }
 
+const olvidePassword = async (data) => {
+    const transport = nodemailer.createTransport({
+        host: process.env.EMAIL_HOST,
+        port: process.env.EMAIL_PORT,
+        auth: {
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS
+        }
+    });
+
+    const { name, email, token } = data;
+    // enviar el email
+    await transport.sendMail({
+        from: 'BienesRaices.com',
+        to: email,
+        subject: 'Restablecer contraseña',
+        text: 'Restablecer contraseña en BienesRaices.com',
+        html: `
+            <h1>Restablecer contraseña</h1>
+            <p>Hola ${name}, solo falta un paso para restablecer tu cientraseña</p>
+            <p>Presiona en el siguiente enlace:</p>
+            <a href="${process.env.BACKEND_URL}:${process.env.PORT ?? 3000}/auth/recover/${token}">Restablecer contraseña</a>
+            <p>Si no solicitates el cambio de password puedes ignorar este mansaje</p>
+        `
+    })
+}
+
 export {
-    emailRegistro
+    emailRegistro,
+    olvidePassword
 }

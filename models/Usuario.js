@@ -29,4 +29,6 @@ const Usuario = db.define("usuario", {
     },
 });
 
+
+
 export default Usuario;
